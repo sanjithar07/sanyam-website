@@ -4,34 +4,7 @@ Premium dark-mode marketing website for Sanyam Engineering (CNC Precision Machin
 
 ---
 
-## 📁 Project Structure
 
-```
-sanyam-engineering/
-├── backend/
-│   ├── server.py          ← FastAPI backend (API + Admin auth)
-│   ├── requirements.txt   ← Python dependencies
-│   ├── .env               ← Environment variables (edit this!)
-│   └── start.sh           ← Quick start script
-│
-└── frontend/
-    ├── public/
-    │   ├── index.html
-    │   └── assets/
-    │       └── sanyam-engineering-brochure.pdf   ← DROP YOUR PDF HERE
-    ├── src/
-    │   ├── App.js
-    │   ├── App.css
-    │   ├── index.js
-    │   ├── index.css
-    │   └── pages/
-    │       ├── Landing.jsx   ← Main website
-    │       └── Admin.jsx     ← Admin dashboard
-    ├── package.json
-    ├── tailwind.config.js
-    ├── postcss.config.js
-    └── .env               ← Frontend env (set REACT_APP_BACKEND_URL)
-```
 
 ---
 
