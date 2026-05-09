@@ -12,7 +12,7 @@ import {
 const API = "/api";
 
 const MEDIA = {
-  heroVideo: "https://websites.godaddy.com/categories/v4/videos/raw/video/uA41GmyyG8IMaxXdb",
+  heroVideo: "/hero.mp4",
   heroPoster: "https://img1.wsimg.com/isteam/videos/uA41GmyyG8IMaxXdb",
   precisionGear: "https://static.prod-images.emergentagent.com/jobs/d9d77106-0a0b-4e99-abec-d4130f02b750/images/057e2d8bc931087f4c050fe8f79ac14ec07da870fe4165c190e04c469e01ce55.png",
   cncSparks: "https://static.prod-images.emergentagent.com/jobs/d9d77106-0a0b-4e99-abec-d4130f02b750/images/e4b023789e17fb467ad5d0d0da57e1d6466acba959e24749ab6ef11fd6ace192.png",
@@ -120,75 +120,69 @@ const Nav = () => {
 };
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
-const isIOS = () =>
-  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-
 const Hero = () => {
   const videoRef = useRef(null);
-  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
 
-    // Set all required iOS attributes programmatically
+    // Required iOS Safari attributes set via JS (React props alone are not enough)
     v.setAttribute("playsinline", "");
     v.setAttribute("webkit-playsinline", "");
+    v.setAttribute("muted", "");
     v.muted = true;
     v.defaultMuted = true;
+    v.volume = 0;
 
     const tryPlay = () => {
       v.muted = true;
-      v.play()
-        .then(() => setVideoReady(true))
-        .catch(() => {});
+      v.volume = 0;
+      const p = v.play();
+      if (p !== undefined) p.catch(() => {});
     };
 
-    // Try immediately
-    tryPlay();
-
-    // Also try on any user interaction (required by iOS Safari)
-    const events = ["touchstart", "touchend", "click", "scroll"];
-    const handler = () => {
+    // iOS Safari requires the video to be loaded before play() works
+    if (v.readyState >= 2) {
       tryPlay();
-      events.forEach((e) => document.removeEventListener(e, handler));
-    };
-    events.forEach((e) => document.addEventListener(e, handler, { passive: true }));
+    } else {
+      v.addEventListener("canplay", tryPlay, { once: true });
+      v.addEventListener("loadeddata", tryPlay, { once: true });
+    }
 
-    // iOS: re-attempt play when page becomes visible again
-    const onVisible = () => { if (!document.hidden) tryPlay(); };
-    document.addEventListener("visibilitychange", onVisible);
+    // Fallback: iOS Low Power Mode blocks autoplay — retry on ANY interaction
+    const retryEvents = ["touchstart", "touchend", "pointerdown", "click"];
+    const retry = () => tryPlay();
+    retryEvents.forEach((e) => window.addEventListener(e, retry, { passive: true, once: true }));
+
+    // iOS pauses video when switching tabs — resume on visibility
+    const onVisibility = () => { if (!document.hidden) tryPlay(); };
+    document.addEventListener("visibilitychange", onVisibility);
 
     return () => {
-      events.forEach((e) => document.removeEventListener(e, handler));
-      document.removeEventListener("visibilitychange", onVisible);
+      retryEvents.forEach((e) => window.removeEventListener(e, retry));
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
   return (
   <section id="top" className="relative h-screen w-full overflow-hidden">
-    {/* Poster image shown on iOS until video plays — prevents native play button */}
-    {!videoReady && (
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: `url(${MEDIA.heroPoster})` }}
-      />
-    )}
     <video
       ref={videoRef}
       autoPlay
       muted
       loop
       playsInline
-      poster={MEDIA.heroPoster}
       preload="auto"
       disablePictureInPicture
       disableRemotePlayback
+      poster={MEDIA.heroPoster}
+      className="absolute inset-0 w-full h-full object-cover ios-video"
+      style={{ pointerEvents: "none", WebkitTransform: "translateZ(0)", transform: "translateZ(0)" }}
       x-webkit-airplay="deny"
-      className={`absolute inset-0 w-full h-full object-cover ios-video transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
-      style={{ pointerEvents: "none" }}
     >
+      {/* MP4 source — iOS requires H.264 codec for autoplay */}
+      <source src={MEDIA.heroVideo} type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
     <div className="absolute inset-0 hero-overlay" />
