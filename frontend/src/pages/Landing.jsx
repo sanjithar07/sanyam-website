@@ -124,17 +124,20 @@ const Hero = () => (
   <section id="top" className="relative h-screen w-full overflow-hidden">
     <video
       autoPlay muted loop playsInline poster={MEDIA.heroPoster}
-      className="absolute inset-0 w-full h-full object-cover"
+      className="absolute inset-0 w-full h-full object-cover ios-video"
       style={{ pointerEvents: "none" }}
+      x-webkit-airplay="deny"
+      webkit-playsinline="true"
+      disablePictureInPicture
     >
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
     <div className="absolute inset-0 hero-overlay" />
-    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10">
+    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10 pt-16 md:pt-0">
       <div className="reveal">
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-[1px] bg-[#C5A059]" />
-          <span className="font-mono-caps text-[11px] text-[#C5A059]">Precision · Performance · Partnership</span>
+          <span className="font-mono-caps text-[10px] md:text-[11px] text-[#C5A059]">Precision · Performance · Partnership</span>
         </div>
         <h1 className="font-display uppercase text-white leading-[0.88] tracking-tighter"
           style={{ fontSize: "clamp(2.8rem, 11vw, 7.5vw)", overflow: "visible" }}>
