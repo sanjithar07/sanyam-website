@@ -63,13 +63,13 @@ const Nav = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
-        <button onClick={() => scrollTo("top")} className="flex items-center gap-3">
+        <button onClick={() => scrollTo("top")} className="flex items-center gap-2">
           <div className="w-9 h-9 border border-[#C5A059]/50 flex items-center justify-center rotate-45">
             <div className="w-4 h-4 bg-[#C5A059]" />
           </div>
-          <div className="leading-none">
-            <div className="font-display text-white text-lg">SANYAM</div>
-            <div className="font-mono-caps text-[10px] text-[#C5A059]">ENGINEERING</div>
+          <div className="leading-tight">
+            <div className="font-display text-white text-lg leading-none">SANYAM</div>
+            <div className="font-mono-caps text-[10px] text-[#C5A059] mt-0.5">ENGINEERING</div>
           </div>
         </button>
 
@@ -133,8 +133,8 @@ const Hero = () => (
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
     <div className="absolute inset-0 hero-overlay" />
-    {/* Fix: use -mt-10 on mobile to reduce gap without causing navbar overlap */}
-    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10 -mt-10 md:mt-0">
+    {/* Fix: removed -mt-24 on mobile to prevent navbar overlap; kept md:mt-0 for desktop */}
+    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10 mt-0">
       <div className="reveal">
         <div className="flex items-center gap-3 mb-3">
           <div className="w-10 h-[1px] bg-[#C5A059]" />
