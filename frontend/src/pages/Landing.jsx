@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import {
@@ -120,15 +120,30 @@ const Nav = () => {
 };
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
-const Hero = () => (
+const Hero = () => {
+  const videoRef = useRef(null);
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play().catch(() => {});
+    const handler = () => { v.muted = true; v.play().catch(() => {}); };
+    document.addEventListener("touchstart", handler, { once: true });
+    return () => document.removeEventListener("touchstart", handler);
+  }, []);
+  return (
   <section id="top" className="relative h-screen w-full overflow-hidden">
     <video
-      autoPlay muted loop playsInline poster={MEDIA.heroPoster}
+      ref={videoRef}
+      autoPlay muted loop playsInline
+      poster={MEDIA.heroPoster}
       className="absolute inset-0 w-full h-full object-cover ios-video"
       style={{ pointerEvents: "none" }}
       x-webkit-airplay="deny"
       webkit-playsinline="true"
       disablePictureInPicture
+      disableRemotePlayback
+      preload="auto"
     >
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
@@ -174,7 +189,8 @@ const Hero = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 // ── About ─────────────────────────────────────────────────────────────────────
 const About = () => (
