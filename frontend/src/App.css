@@ -104,11 +104,14 @@
 .wa-pulse { animation: pulseGreen 2.4s infinite; }
 
 /* iOS video — hide native play button, force autoplay */
-.ios-video::-webkit-media-controls { display: none !important; }
-.ios-video::-webkit-media-controls-enclosure { display: none !important; }
-.ios-video::-webkit-media-controls-panel { display: none !important; }
-.ios-video::-webkit-media-controls-play-button { display: none !important; }
-.ios-video::-webkit-media-controls-start-playback-button { display: none !important; }
+.ios-video::-webkit-media-controls { display: none !important; opacity: 0 !important; visibility: hidden !important; }
+.ios-video::-webkit-media-controls-enclosure { display: none !important; opacity: 0 !important; visibility: hidden !important; }
+.ios-video::-webkit-media-controls-panel { display: none !important; opacity: 0 !important; visibility: hidden !important; }
+.ios-video::-webkit-media-controls-play-button { display: none !important; opacity: 0 !important; visibility: hidden !important; }
+.ios-video::-webkit-media-controls-start-playback-button { display: none !important; opacity: 0 !important; visibility: hidden !important; }
+.ios-video::-webkit-media-controls-overlay-play-button { display: none !important; opacity: 0 !important; visibility: hidden !important; }
+video::-webkit-media-controls-start-playback-button { display: none !important; opacity: 0 !important; }
+video::-webkit-media-controls { display: none !important; opacity: 0 !important; }
 
 /* Selection */
 ::selection { background: #C5A059; color: #0a0a0a; }
