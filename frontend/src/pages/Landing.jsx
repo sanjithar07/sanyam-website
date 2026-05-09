@@ -67,9 +67,9 @@ const Nav = () => {
           <div className="w-9 h-9 border border-[#C5A059]/50 flex items-center justify-center rotate-45">
             <div className="w-4 h-4 bg-[#C5A059]" />
           </div>
-          <div className="leading-tight">
+          <div className="leading-none">
             <div className="font-display text-white text-lg leading-none">SANYAM</div>
-            <div className="font-mono-caps text-[10px] text-[#C5A059] mt-0.5">ENGINEERING</div>
+            <div className="font-mono-caps text-[10px] text-[#C5A059] -mt-0.5">ENGINEERING</div>
           </div>
         </button>
 
