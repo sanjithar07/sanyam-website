@@ -157,7 +157,7 @@ const Hero = () => (
             Request a Quote <ArrowUpRight size={16} />
           </button>
           <a
-            href="/assets/sanyam-engineering-brochure.pdf"
+            href="/sanyam-engineering-brochure.pdf"
             download
             className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
           >
@@ -600,7 +600,7 @@ const Footer = () => (
       <div>
         <div className="font-mono-caps text-[10px] text-[#C5A059] mb-4">Resources</div>
         <div className="text-sm text-neutral-300 space-y-2">
-          <a href="/assets/sanyam-engineering-brochure.pdf" download className="block hover:text-[#C5A059]">Download Brochure</a>
+          <a href="/sanyam-engineering-brochure.pdf" download className="block hover:text-[#C5A059]">Download Brochure</a>
           <a href="#contact" className="block hover:text-[#C5A059]">Request a Quote</a>
           <a href="/admin" className="block hover:text-[#C5A059]">Admin</a>
         </div>
