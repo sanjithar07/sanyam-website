@@ -134,10 +134,9 @@ const Hero = () => (
     </video>
     <div className="absolute inset-0 hero-overlay" />
     {/* CHANGED: pt-16 → pt-20 — adds a comfortable gap below the fixed navbar on mobile */}
-    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10 pt-20 md:pt-0">
+    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10 pt-18 md:pt-0">
       <div className="reveal">
-        {/* CHANGED: mb-4 → mb-6 — slightly more breathing room between tagline and heading */}
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-5">
           <div className="w-10 h-[1px] bg-[#C5A059]" />
           <span className="font-mono-caps text-[10px] md:text-[11px] text-[#C5A059]">Precision · Performance · Partnership</span>
         </div>
