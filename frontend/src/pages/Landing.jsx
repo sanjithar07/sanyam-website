@@ -134,7 +134,7 @@ const Hero = () => (
     </video>
     <div className="absolute inset-0 hero-overlay" />
     {/* CHANGED: pt-16 → pt-20 — adds a comfortable gap below the fixed navbar on mobile */}
-    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10 pt-16 md:pt-0">
+    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10 pt-12 md:pt-0">
       <div className="reveal">
         <div className="flex items-center gap-3 mb-3">
           <div className="w-10 h-[1px] bg-[#C5A059]" />
