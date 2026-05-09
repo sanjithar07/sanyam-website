@@ -120,30 +120,74 @@ const Nav = () => {
 };
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
+const isIOS = () =>
+  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
 const Hero = () => {
   const videoRef = useRef(null);
+  const [videoReady, setVideoReady] = useState(false);
+
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+
+    // Set all required iOS attributes programmatically
+    v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
     v.muted = true;
-    v.play().catch(() => {});
-    const handler = () => { v.muted = true; v.play().catch(() => {}); };
-    document.addEventListener("touchstart", handler, { once: true });
-    return () => document.removeEventListener("touchstart", handler);
+    v.defaultMuted = true;
+
+    const tryPlay = () => {
+      v.muted = true;
+      v.play()
+        .then(() => setVideoReady(true))
+        .catch(() => {});
+    };
+
+    // Try immediately
+    tryPlay();
+
+    // Also try on any user interaction (required by iOS Safari)
+    const events = ["touchstart", "touchend", "click", "scroll"];
+    const handler = () => {
+      tryPlay();
+      events.forEach((e) => document.removeEventListener(e, handler));
+    };
+    events.forEach((e) => document.addEventListener(e, handler, { passive: true }));
+
+    // iOS: re-attempt play when page becomes visible again
+    const onVisible = () => { if (!document.hidden) tryPlay(); };
+    document.addEventListener("visibilitychange", onVisible);
+
+    return () => {
+      events.forEach((e) => document.removeEventListener(e, handler));
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, []);
+
   return (
   <section id="top" className="relative h-screen w-full overflow-hidden">
+    {/* Poster image shown on iOS until video plays — prevents native play button */}
+    {!videoReady && (
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{ backgroundImage: `url(${MEDIA.heroPoster})` }}
+      />
+    )}
     <video
       ref={videoRef}
-      autoPlay muted loop playsInline
+      autoPlay
+      muted
+      loop
+      playsInline
       poster={MEDIA.heroPoster}
-      className="absolute inset-0 w-full h-full object-cover ios-video"
-      style={{ pointerEvents: "none" }}
-      x-webkit-airplay="deny"
-      webkit-playsinline="true"
+      preload="auto"
       disablePictureInPicture
       disableRemotePlayback
-      preload="auto"
+      x-webkit-airplay="deny"
+      className={`absolute inset-0 w-full h-full object-cover ios-video transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
+      style={{ pointerEvents: "none" }}
     >
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
