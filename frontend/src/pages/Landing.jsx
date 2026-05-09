@@ -125,6 +125,7 @@ const Hero = () => (
     <video
       autoPlay muted loop playsInline poster={MEDIA.heroPoster}
       className="absolute inset-0 w-full h-full object-cover"
+      style={{ pointerEvents: "none" }}
     >
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
@@ -135,14 +136,14 @@ const Hero = () => (
           <div className="w-10 h-[1px] bg-[#C5A059]" />
           <span className="font-mono-caps text-[11px] text-[#C5A059]">Precision · Performance · Partnership</span>
         </div>
-        <h1 className="font-display uppercase text-white text-[14vw] md:text-[9vw] lg:text-[7.5vw] leading-[0.88] tracking-tighter"
-          style={{ overflow: "visible" }}>
+        <h1 className="font-display uppercase text-white leading-[0.88] tracking-tighter"
+          style={{ fontSize: "clamp(2.8rem, 11vw, 7.5vw)", overflow: "visible" }}>
           Engineered
-  <br />
-  <span className="gold-text italic inline-block pr-[0.15em]">
-    for Precision
-  </span>
-</h1>
+          <br />
+          <span className="gold-text italic inline-block pr-[0.15em]">
+            for Precision
+          </span>
+        </h1>
         <p className="mt-8 max-w-xl text-neutral-300 text-base md:text-lg leading-relaxed">
           We operate at the intersection of precision machining, material behaviour and
           real-world application demands — building components that are understood for how
@@ -425,29 +426,39 @@ const Products = () => (
 
 // ── Contact / Quote Form ──────────────────────────────────────────────────────
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", industry: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", company: "", industry: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
-  const onChange = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+  const onChange = (k) => (e) => {
+    setForm({ ...form, [k]: e.target.value });
+    if (k === "email") setEmailError("");
+  };
 
   const submit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.phone || !form.message) {
+    if (!form.name || !form.phone) {
       toast.error("Please fill all required fields.");
       return;
+    }
+    if (form.email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(form.email)) {
+        setEmailError("Please enter a valid email address.");
+        return;
+      }
     }
     setLoading(true);
     try {
       await axios.post(`${API}/quotes`, form);
       toast.success("Quote request received. We'll get back to you within 24 hours.");
-      setForm({ name: "", company: "", email: "", phone: "", industry: "", message: "" });
+      setForm({ name: "", phone: "", email: "", company: "", industry: "", message: "" });
     } catch (err) {
       const detail = err?.response?.data?.detail;
       let message = "Something went wrong. Try again.";
       if (typeof detail === "string") {
         message = detail;
       } else if (Array.isArray(detail)) {
-        // FastAPI validation errors come as an array like [{msg: "...", loc: [...]}]
         message = detail.map((e) => e.msg).join(", ");
       }
       toast.error(message);
@@ -501,16 +512,17 @@ const Contact = () => {
                 <input id="name" name="name" required value={form.name} onChange={onChange("name")} data-testid="input-name" autoComplete="name"
                   className="w-full bg-transparent border-b border-white/15 focus:border-[#C5A059] outline-none py-2.5 text-white transition-colors" />
               </Field>
-              <Field label="Company">
-                <input id="company" name="company" value={form.company} onChange={onChange("company")} data-testid="input-company" autoComplete="organization"
-                  className="w-full bg-transparent border-b border-white/15 focus:border-[#C5A059] outline-none py-2.5 text-white transition-colors" />
-              </Field>
-              <Field label="Email *">
-                <input id="email" name="email" required type="email" value={form.email} onChange={onChange("email")} data-testid="input-email" autoComplete="email"
-                  className="w-full bg-transparent border-b border-white/15 focus:border-[#C5A059] outline-none py-2.5 text-white transition-colors" />
-              </Field>
               <Field label="Phone *">
                 <input id="phone" name="phone" required value={form.phone} onChange={onChange("phone")} data-testid="input-phone" autoComplete="tel"
+                  className="w-full bg-transparent border-b border-white/15 focus:border-[#C5A059] outline-none py-2.5 text-white transition-colors" />
+              </Field>
+              <Field label="Email">
+                <input id="email" name="email" type="text" value={form.email} onChange={onChange("email")} data-testid="input-email" autoComplete="email"
+                  className="w-full bg-transparent border-b border-white/15 focus:border-[#C5A059] outline-none py-2.5 text-white transition-colors" />
+                {emailError && <span className="text-red-400 text-xs mt-1 block">{emailError}</span>}
+              </Field>
+              <Field label="Company">
+                <input id="company" name="company" value={form.company} onChange={onChange("company")} data-testid="input-company" autoComplete="organization"
                   className="w-full bg-transparent border-b border-white/15 focus:border-[#C5A059] outline-none py-2.5 text-white transition-colors" />
               </Field>
             </div>
@@ -523,8 +535,8 @@ const Contact = () => {
                 ))}
               </select>
             </Field>
-            <Field label="Project details *">
-              <textarea id="message" name="message" required rows={5} value={form.message} onChange={onChange("message")} data-testid="input-message" autoComplete="off"
+            <Field label="Project Details">
+              <textarea id="message" name="message" rows={5} value={form.message} onChange={onChange("message")} data-testid="input-message" autoComplete="off"
                 className="w-full bg-transparent border-b border-white/15 focus:border-[#C5A059] outline-none py-2.5 text-white transition-colors resize-none" />
             </Field>
             <button
