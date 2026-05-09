@@ -129,11 +129,13 @@ const Hero = () => (
       x-webkit-airplay="deny"
       webkit-playsinline="true"
       disablePictureInPicture
+      controlsList="nodownload nofullscreen noremoteplayback"
+      onContextMenu={(e) => e.preventDefault()}
     >
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
     <div className="absolute inset-0 hero-overlay" />
-    <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 lg:px-10 pt-16 md:pt-0">
+    <div className="relative z-10 h-full flex flex-col justify-start max-w-7xl mx-auto px-6 lg:px-10 pt-[80px] md:pt-[88px]">
       <div className="reveal">
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-[1px] bg-[#C5A059]" />
