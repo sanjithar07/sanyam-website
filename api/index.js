@@ -84,10 +84,10 @@ router.post(
   [
     body("name").isString().trim().isLength({ min: 1, max: 120 }),
     body("company").optional({ nullable: true }).isString().trim().isLength({ max: 160 }),
-    body("email").isEmail().normalizeEmail(),
+    body("email").optional({ nullable: true, checkFalsy: true }).isEmail().normalizeEmail(),
     body("phone").isString().trim().isLength({ min: 5, max: 30 }),
     body("industry").optional({ nullable: true }).isString().trim().isLength({ max: 80 }),
-    body("message").isString().trim().isLength({ min: 5, max: 4000 }),
+    body("message").optional({ nullable: true, checkFalsy: true }).isString().trim().isLength({ max: 4000 }),
   ],
   validate,
   async (req, res) => {
