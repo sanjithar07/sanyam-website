@@ -120,14 +120,45 @@ const Nav = () => {
 };
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
-const Hero = () => (
+const Hero = () => {
+  const videoRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+
+    // iOS Safari requires muted set both as attribute AND JS property
+    vid.muted = true;
+    vid.setAttribute("muted", "");
+    vid.playsInline = true;
+
+    const tryPlay = () => {
+      vid.play().catch(() => {
+        // Low Power Mode or policy block — silently fall back to poster
+      });
+    };
+
+    if (vid.readyState >= 2) {
+      tryPlay();
+    } else {
+      vid.addEventListener("loadeddata", tryPlay, { once: true });
+      // Second attempt covers iOS Safari timing quirks
+      setTimeout(tryPlay, 500);
+    }
+
+    return () => vid.removeEventListener("loadeddata", tryPlay);
+  }, []);
+
+  return (
   <section id="top" className="relative h-screen w-full overflow-hidden">
     <video
+      ref={videoRef}
       autoPlay muted loop playsInline poster={MEDIA.heroPoster}
       className="absolute inset-0 w-full h-full object-cover ios-video"
       style={{ pointerEvents: "none" }}
       x-webkit-airplay="deny"
       webkit-playsinline="true"
+      preload="auto"
       disablePictureInPicture
     >
       <source src={MEDIA.heroVideo} type="video/mp4" />
@@ -181,7 +212,8 @@ const Hero = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 // ── About ─────────────────────────────────────────────────────────────────────
 const About = () => (
