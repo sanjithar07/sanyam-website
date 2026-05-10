@@ -103,6 +103,14 @@
 }
 .wa-pulse { animation: pulseGreen 2.4s infinite; }
 
+/* iOS Safari video fix — transform forces GPU compositing layer */
+.ios-video {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 /* iOS video — hide native play button, force autoplay */
 .ios-video::-webkit-media-controls { display: none !important; opacity: 0 !important; visibility: hidden !important; }
 .ios-video::-webkit-media-controls-enclosure { display: none !important; opacity: 0 !important; visibility: hidden !important; }
