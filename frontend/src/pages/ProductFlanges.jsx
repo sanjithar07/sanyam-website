@@ -6,47 +6,47 @@ const FLANGE_TYPES = [
   {
     name: "Weld Neck",
     desc: "High-integrity flanges with a tapered hub for butt-welding to pipe. Ideal for high-pressure and high-temperature applications.",
-    img: "/catalogue-images/flange-weld-neck.jpg",
+    img: "/flange-weld-neck.jpg",
   },
   {
     name: "Slip On",
     desc: "Slides over the pipe and is welded at both the bore and face. Cost-effective for moderate pressure services.",
-    img: "/catalogue-images/flange-slip-on.jpg",
+    img: "/flange-slip-on.jpg",
   },
   {
     name: "Blind",
     desc: "Solid flange used to close off the end of a pipe, valve or pressure vessel. Ideal for future expansion points.",
-    img: "/catalogue-images/flange-blind.jpg",
+    img: "/flange-blind.jpg",
   },
   {
     name: "Socket Weld",
     desc: "Socket-bore accepts the pipe end and welds around the hub. Suited for small-diameter, high-pressure lines.",
-    img: "/catalogue-images/flange-socket-weld.jpg",
+    img: "/flange-socket-weld.jpg",
   },
   {
     name: "Threaded",
     desc: "Threaded bore allows assembly without welding. Used where welding is not possible or practical.",
-    img: "/catalogue-images/flange-threaded.jpg",
+    img: "/flange-threaded.jpg",
   },
   {
     name: "Lap Joint",
     desc: "Used with a stub end; the flange slides over the pipe allowing free rotation for easy bolt alignment.",
-    img: "/catalogue-images/flange-lap-joint.jpg",
+    img: "/flange-lap-joint.jpg",
   },
   {
     name: "Raised Face",
     desc: "Most common face type — raised seating area concentrates gasket bolt load for better sealing under pressure.",
-    img: "/catalogue-images/flange-raised-face.jpg",
+    img: "/flange-raised-face.jpg",
   },
   {
     name: "Flat Face",
     desc: "Entire face is flat. Used where mating flange or fitting is made of a brittle material such as cast iron.",
-    img: "/catalogue-images/flange-flat-face.jpg",
+    img: "/flange-flat-face.jpg",
   },
   {
     name: "Ring Type Joint",
     desc: "Metal ring gasket seated in a machined groove. Designed for extremely high-pressure and high-temperature service.",
-    img: "/catalogue-images/flange-ring-type-joint.png",
+    img: "/flange-ring-type-joint.png",
   },
 ];
 
