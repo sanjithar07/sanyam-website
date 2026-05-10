@@ -184,26 +184,24 @@ const Hero = () => {
           real-world application demands — building components that are understood for how
           they <em className="text-[#C5A059] not-italic">perform</em>, not just how they are drawn.
         </p>
-        <div className="mt-10 flex flex-wrap gap-4">
+        <div className="mt-10 flex flex-wrap gap-3">
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="btn-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
+            className="hero-btn hero-btn--primary"
           >
-            Request a Quote <ArrowUpRight size={16} />
+            <span className="hero-btn__icon"><ArrowUpRight size={15} /></span>
+            <span className="hero-btn__divider" />
+            <span className="hero-btn__label">Request a Quote</span>
           </button>
-          <a
-            href="/sanyam-engineering-brochure.pdf"
-            download
-            className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
-          >
-            Download Brochure <Download size={16} />
+          <a href="/sanyam-engineering-brochure.pdf" download className="hero-btn hero-btn--ghost">
+            <span className="hero-btn__icon"><Download size={15} /></span>
+            <span className="hero-btn__divider" />
+            <span className="hero-btn__label">Brochure</span>
           </a>
-          <a
-            href="/sanyam-engineering-product-catalogue.pdf"
-            download
-            className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
-          >
-            Download Catalogue <Download size={16} />
+          <a href="/sanyam-engineering-product-catalogue.pdf" download className="hero-btn hero-btn--ghost">
+            <span className="hero-btn__icon"><Download size={15} /></span>
+            <span className="hero-btn__divider" />
+            <span className="hero-btn__label">Catalogue</span>
           </a>
         </div>
       </div>
