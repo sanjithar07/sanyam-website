@@ -16,12 +16,12 @@ const COUPLING_TYPES = [
   {
     name: "Socket Weld Coupling",
     desc: "Socket-bore coupling for fillet-weld attachment to pipe. Ideal for small-bore, high-pressure piping systems.",
-    img: "/coupling-socket-weld.jpg",
+    img: "/coupling-socket-weld.png",
   },
   {
     name: "Threaded Coupling",
     desc: "Internal threads on both ends allow screwed pipe connections. No welding required — quick assembly and removal.",
-    img: "/coupling-threaded.jpg",
+    img: "/coupling-threaded.png",
   },
   {
     name: "Union Coupling",
@@ -31,7 +31,7 @@ const COUPLING_TYPES = [
   {
     name: "Love Joy Coupling",
     desc: "Flexible jaw coupling for shaft-to-shaft connections. Absorbs shock and misalignment in drive transmissions.",
-    img: "/coupling-love-joy.jpg",
+    img: "/coupling-love-joy.png",
   },
   {
     name: "Rigid Coupling",
@@ -51,12 +51,12 @@ const COUPLING_TYPES = [
   {
     name: "Clamp Coupling",
     desc: "Split-clamp design allows assembly without shaft disassembly. Provides high clamping force with easy removal.",
-    img: "/coupling-clamp.jpg",
+    img: "/coupling-clamp.png",
   },
   {
     name: "Bushed Coupling",
     desc: "Uses nylon or polyurethane bushes between jaws for vibration damping. Tolerates angular and parallel misalignment.",
-    img: "/coupling-bushed.jpg",
+    img: "/coupling-bushed.png",
   },
   {
     name: "Gear Coupling",

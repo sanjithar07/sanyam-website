@@ -6,42 +6,42 @@ const FLANGE_TYPES = [
   {
     name: "Weld Neck",
     desc: "High-integrity flanges with a tapered hub for butt-welding to pipe. Ideal for high-pressure and high-temperature applications.",
-    img: "/flange-weld-neck.jpg",
+    img: "/flange-weld-neck.png",
   },
   {
     name: "Slip On",
     desc: "Slides over the pipe and is welded at both the bore and face. Cost-effective for moderate pressure services.",
-    img: "/flange-slip-on.jpg",
+    img: "/flange-slip-on.png",
   },
   {
     name: "Blind",
     desc: "Solid flange used to close off the end of a pipe, valve or pressure vessel. Ideal for future expansion points.",
-    img: "/flange-blind.jpg",
+    img: "/flange-blind.png",
   },
   {
     name: "Socket Weld",
     desc: "Socket-bore accepts the pipe end and welds around the hub. Suited for small-diameter, high-pressure lines.",
-    img: "/flange-socket-weld.jpg",
+    img: "/flange-socket-weld.png",
   },
   {
     name: "Threaded",
     desc: "Threaded bore allows assembly without welding. Used where welding is not possible or practical.",
-    img: "/flange-threaded.jpg",
+    img: "/flange-threaded.png",
   },
   {
     name: "Lap Joint",
     desc: "Used with a stub end; the flange slides over the pipe allowing free rotation for easy bolt alignment.",
-    img: "/flange-lap-joint.jpg",
+    img: "/flange-lap-joint.png",
   },
   {
     name: "Raised Face",
     desc: "Most common face type — raised seating area concentrates gasket bolt load for better sealing under pressure.",
-    img: "/flange-raised-face.jpg",
+    img: "/flange-raised-face.png",
   },
   {
     name: "Flat Face",
     desc: "Entire face is flat. Used where mating flange or fitting is made of a brittle material such as cast iron.",
-    img: "/flange-flat-face.jpg",
+    img: "/flange-flat-face.png",
   },
   {
     name: "Ring Type Joint",

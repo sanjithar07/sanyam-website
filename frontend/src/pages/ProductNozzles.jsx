@@ -6,7 +6,7 @@ const NOZZLE_TYPES = [
   {
     name: "SS Air Nozzles",
     desc: "Stainless steel boiler air nozzles machined for corrosion resistance and long service life in high-temperature air distribution.",
-    img: "/nozzle-ss-air.jpg",
+    img: "/nozzle-ss-air.png",
   },
   {
     name: "MS Air Nozzles",
@@ -21,12 +21,12 @@ const NOZZLE_TYPES = [
   {
     name: "High Pressure Nozzles",
     desc: "Precision-ground nozzles rated for high-pressure air and steam systems. Tight dimensional tolerances for consistent flow characteristics.",
-    img: "/nozzle-high-pressure.jpg",
+    img: "/nozzle-high-pressure.png",
   },
   {
     name: "Casting Nozzles",
     desc: "Cast nozzle bodies finished to drawing specifications. Suitable for high-volume replacement programmes with reliable dimensional repeat.",
-    img: "/nozzle-casting.jpg",
+    img: "/nozzle-casting.png",
   },
   {
     name: "Any Kinds of Nozzles",
