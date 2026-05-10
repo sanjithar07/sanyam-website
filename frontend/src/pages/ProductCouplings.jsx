@@ -6,62 +6,62 @@ const COUPLING_TYPES = [
   {
     name: "Half & Full Coupling",
     desc: "Threaded or socket-weld half/full couplings for pipe branch connections. Available in all pressure classes.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-half-full.png",
   },
   {
     name: "Reducing Coupling",
     desc: "Connects pipes of two different diameters in line. Precision bored to ensure concentricity and flow continuity.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-reducing.png",
   },
   {
     name: "Socket Weld Coupling",
     desc: "Socket-bore coupling for fillet-weld attachment to pipe. Ideal for small-bore, high-pressure piping systems.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-socket-weld.jpg",
   },
   {
     name: "Threaded Coupling",
     desc: "Internal threads on both ends allow screwed pipe connections. No welding required — quick assembly and removal.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-threaded.jpg",
   },
   {
     name: "Union Coupling",
     desc: "Three-piece assembly for easy disconnection without rotating either pipe. Used in maintenance-critical lines.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-union.png",
   },
   {
     name: "Love Joy Coupling",
     desc: "Flexible jaw coupling for shaft-to-shaft connections. Absorbs shock and misalignment in drive transmissions.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-love-joy.jpg",
   },
   {
     name: "Rigid Coupling",
     desc: "Solid coupling for perfectly aligned shafts. Transmits torque with zero backlash — used in precision machinery.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-rigid.png",
   },
   {
     name: "Sleeve Coupling",
     desc: "Hollow cylindrical coupling connecting two shaft ends. Simple design for low-speed, low-torque applications.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-sleeve.png",
   },
   {
     name: "Flange Coupling",
     desc: "Two flanged hubs bolted together transmitting high torque. Robust and reliable for heavy-duty rotating equipment.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-flange.png",
   },
   {
     name: "Clamp Coupling",
     desc: "Split-clamp design allows assembly without shaft disassembly. Provides high clamping force with easy removal.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-clamp.jpg",
   },
   {
     name: "Bushed Coupling",
     desc: "Uses nylon or polyurethane bushes between jaws for vibration damping. Tolerates angular and parallel misalignment.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-bushed.jpg",
   },
   {
     name: "Gear Coupling",
     desc: "Crowned external gear meshing with straight internal gear sleeve. Handles high torque with angular misalignment.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/coupling-gear.png",
   },
 ];
 
@@ -114,11 +114,11 @@ export default function ProductCouplings() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {COUPLING_TYPES.map((item, i) => (
               <div key={i} className="card-dark rounded-sm overflow-hidden group">
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-52 overflow-hidden bg-white/5 flex items-center justify-center">
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 p-4"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111114] via-transparent to-transparent" />
                 </div>
