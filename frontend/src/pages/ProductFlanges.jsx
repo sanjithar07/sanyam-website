@@ -6,47 +6,47 @@ const FLANGE_TYPES = [
   {
     name: "Weld Neck",
     desc: "High-integrity flanges with a tapered hub for butt-welding to pipe. Ideal for high-pressure and high-temperature applications.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-weld-neck.jpg",
   },
   {
     name: "Slip On",
     desc: "Slides over the pipe and is welded at both the bore and face. Cost-effective for moderate pressure services.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-slip-on.jpg",
   },
   {
     name: "Blind",
     desc: "Solid flange used to close off the end of a pipe, valve or pressure vessel. Ideal for future expansion points.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-blind.jpg",
   },
   {
     name: "Socket Weld",
     desc: "Socket-bore accepts the pipe end and welds around the hub. Suited for small-diameter, high-pressure lines.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-socket-weld.jpg",
   },
   {
     name: "Threaded",
     desc: "Threaded bore allows assembly without welding. Used where welding is not possible or practical.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-threaded.jpg",
   },
   {
     name: "Lap Joint",
     desc: "Used with a stub end; the flange slides over the pipe allowing free rotation for easy bolt alignment.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-lap-joint.jpg",
   },
   {
     name: "Raised Face",
     desc: "Most common face type — raised seating area concentrates gasket bolt load for better sealing under pressure.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-raised-face.jpg",
   },
   {
     name: "Flat Face",
     desc: "Entire face is flat. Used where mating flange or fitting is made of a brittle material such as cast iron.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-flat-face.jpg",
   },
   {
     name: "Ring Type Joint",
     desc: "Metal ring gasket seated in a machined groove. Designed for extremely high-pressure and high-temperature service.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/flange-ring-type-joint.png",
   },
 ];
 
@@ -102,11 +102,11 @@ export default function ProductFlanges() {
                 key={i}
                 className="card-dark rounded-sm overflow-hidden group"
               >
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-52 overflow-hidden bg-white/5 flex items-center justify-center">
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 p-4"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111114] via-transparent to-transparent" />
                 </div>
