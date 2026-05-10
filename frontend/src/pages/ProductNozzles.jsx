@@ -6,32 +6,32 @@ const NOZZLE_TYPES = [
   {
     name: "SS Air Nozzles",
     desc: "Stainless steel boiler air nozzles machined for corrosion resistance and long service life in high-temperature air distribution.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/nozzle-ss-air.jpg",
   },
   {
     name: "MS Air Nozzles",
     desc: "Mild steel air nozzles for standard boiler grate applications. Cost-effective with reliable air distribution performance.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/nozzle-ms-air.png",
   },
   {
     name: "EN8 Air Nozzles",
     desc: "EN8 medium carbon steel nozzles for demanding boiler environments — offering superior hardness and wear resistance.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/nozzle-en8-air.png",
   },
   {
     name: "High Pressure Nozzles",
     desc: "Precision-ground nozzles rated for high-pressure air and steam systems. Tight dimensional tolerances for consistent flow characteristics.",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/nozzle-high-pressure.jpg",
   },
   {
     name: "Casting Nozzles",
     desc: "Cast nozzle bodies finished to drawing specifications. Suitable for high-volume replacement programmes with reliable dimensional repeat.",
-    img: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/nozzle-casting.jpg",
   },
   {
     name: "Any Kinds of Nozzles",
     desc: "Custom nozzles manufactured to any geometry, material or thread specification. We work from drawings, samples or reverse engineering.",
-    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=srgb&fm=jpg&q=85&w=600",
+    img: "/catalogue-images/nozzle-any-kinds.png",
   },
 ];
 
@@ -85,11 +85,11 @@ export default function ProductNozzles() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {NOZZLE_TYPES.map((item, i) => (
               <div key={i} className="card-dark rounded-sm overflow-hidden group">
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-52 overflow-hidden bg-white/5 flex items-center justify-center">
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 p-4"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111114] via-transparent to-transparent" />
                 </div>
