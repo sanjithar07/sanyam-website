@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
 import {
@@ -184,24 +185,26 @@ const Hero = () => {
           real-world application demands — building components that are understood for how
           they <em className="text-[#C5A059] not-italic">perform</em>, not just how they are drawn.
         </p>
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-10 flex flex-wrap gap-4">
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="hero-btn hero-btn--primary"
+            className="btn-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
           >
-            <span className="hero-btn__icon"><ArrowUpRight size={15} /></span>
-            <span className="hero-btn__divider" />
-            <span className="hero-btn__label">Request a Quote</span>
+            Request a Quote <ArrowUpRight size={16} />
           </button>
-          <a href="/sanyam-engineering-brochure.pdf" download className="hero-btn hero-btn--ghost">
-            <span className="hero-btn__icon"><Download size={15} /></span>
-            <span className="hero-btn__divider" />
-            <span className="hero-btn__label">Brochure</span>
+          <a
+            href="/sanyam-engineering-brochure.pdf"
+            download
+            className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
+          >
+            Download Brochure <Download size={16} />
           </a>
-          <a href="/sanyam-engineering-product-catalogue.pdf" download className="hero-btn hero-btn--ghost">
-            <span className="hero-btn__icon"><Download size={15} /></span>
-            <span className="hero-btn__divider" />
-            <span className="hero-btn__label">Catalogue</span>
+          <a
+            href="/sanyam-engineering-product-catalogue.pdf"
+            download
+            className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
+          >
+            Download Catalogue <Download size={16} />
           </a>
         </div>
       </div>
@@ -447,16 +450,24 @@ const Products = () => (
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
-          { img: MEDIA.flanges, t: "Flanges", d: "Weld-neck, blind, slip-on — ASTM grade traceability." },
-          { img: MEDIA.machine, t: "Couplings & Shafts", d: "Keyed shaft couplings engineered for torque stability." },
-          { img: MEDIA.worker, t: "Precision Components", d: "Bespoke nozzles, fittings and pressure parts." },
+          { img: MEDIA.flanges, t: "Flanges", d: "Weld-neck, blind, slip-on — ASTM grade traceability.", href: "/products/flanges" },
+          { img: MEDIA.machine, t: "Couplings", d: "Keyed shaft couplings engineered for torque stability.", href: "/products/couplings" },
+          { img: MEDIA.worker, t: "Boiler Air Nozzles", d: "Bespoke nozzles, fittings and pressure parts.", href: "/products/nozzles" },
         ].map((p, i) => (
           <div key={i} className="reveal group relative overflow-hidden rounded-sm border border-white/5">
             <img src={p.img} alt={p.t} className="w-full h-[320px] object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/30 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-6">
-              <h3 className="font-display uppercase text-white text-xl">{p.t}</h3>
-              <p className="text-xs text-neutral-400 mt-1">{p.d}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
+              <div>
+                <h3 className="font-display uppercase text-white text-xl">{p.t}</h3>
+                <p className="text-xs text-neutral-400 mt-1">{p.d}</p>
+              </div>
+              <Link
+                to={p.href}
+                className="flex-shrink-0 ml-4 flex items-center gap-1.5 font-mono-caps text-[10px] text-[#C5A059] border border-[#C5A059]/40 px-3 py-1.5 rounded-sm hover:bg-[#C5A059]/10 transition-colors"
+              >
+                View All <ArrowUpRight size={12} />
+              </Link>
             </div>
           </div>
         ))}
