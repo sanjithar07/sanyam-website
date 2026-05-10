@@ -6,32 +6,32 @@ const NOZZLE_TYPES = [
   {
     name: "SS Air Nozzles",
     desc: "Stainless steel boiler air nozzles machined for corrosion resistance and long service life in high-temperature air distribution.",
-    img: "/catalogue-images/nozzle-ss-air.jpg",
+    img: "/nozzle-ss-air.jpg",
   },
   {
     name: "MS Air Nozzles",
     desc: "Mild steel air nozzles for standard boiler grate applications. Cost-effective with reliable air distribution performance.",
-    img: "/catalogue-images/nozzle-ms-air.png",
+    img: "/nozzle-ms-air.png",
   },
   {
     name: "EN8 Air Nozzles",
     desc: "EN8 medium carbon steel nozzles for demanding boiler environments — offering superior hardness and wear resistance.",
-    img: "/catalogue-images/nozzle-en8-air.png",
+    img: "/nozzle-en8-air.png",
   },
   {
     name: "High Pressure Nozzles",
     desc: "Precision-ground nozzles rated for high-pressure air and steam systems. Tight dimensional tolerances for consistent flow characteristics.",
-    img: "/catalogue-images/nozzle-high-pressure.jpg",
+    img: "/nozzle-high-pressure.jpg",
   },
   {
     name: "Casting Nozzles",
     desc: "Cast nozzle bodies finished to drawing specifications. Suitable for high-volume replacement programmes with reliable dimensional repeat.",
-    img: "/catalogue-images/nozzle-casting.jpg",
+    img: "/nozzle-casting.jpg",
   },
   {
     name: "Any Kinds of Nozzles",
     desc: "Custom nozzles manufactured to any geometry, material or thread specification. We work from drawings, samples or reverse engineering.",
-    img: "/catalogue-images/nozzle-any-kinds.png",
+    img: "/nozzle-any-kinds.png",
   },
 ];
 
