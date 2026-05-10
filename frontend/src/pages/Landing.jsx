@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import {
@@ -12,7 +12,7 @@ import {
 const API = "/api";
 
 const MEDIA = {
-  heroVideo: "/hero.mp4",
+  heroVideo: "https://websites.godaddy.com/categories/v4/videos/raw/video/uA41GmyyG8IMaxXdb",
   heroPoster: "https://img1.wsimg.com/isteam/videos/uA41GmyyG8IMaxXdb",
   precisionGear: "https://static.prod-images.emergentagent.com/jobs/d9d77106-0a0b-4e99-abec-d4130f02b750/images/057e2d8bc931087f4c050fe8f79ac14ec07da870fe4165c190e04c469e01ce55.png",
   cncSparks: "https://static.prod-images.emergentagent.com/jobs/d9d77106-0a0b-4e99-abec-d4130f02b750/images/e4b023789e17fb467ad5d0d0da57e1d6466acba959e24749ab6ef11fd6ace192.png",
@@ -120,69 +120,16 @@ const Nav = () => {
 };
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
-const Hero = () => {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-
-    // Required iOS Safari attributes set via JS (React props alone are not enough)
-    v.setAttribute("playsinline", "");
-    v.setAttribute("webkit-playsinline", "");
-    v.setAttribute("muted", "");
-    v.muted = true;
-    v.defaultMuted = true;
-    v.volume = 0;
-
-    const tryPlay = () => {
-      v.muted = true;
-      v.volume = 0;
-      const p = v.play();
-      if (p !== undefined) p.catch(() => {});
-    };
-
-    // iOS Safari requires the video to be loaded before play() works
-    if (v.readyState >= 2) {
-      tryPlay();
-    } else {
-      v.addEventListener("canplay", tryPlay, { once: true });
-      v.addEventListener("loadeddata", tryPlay, { once: true });
-    }
-
-    // Fallback: iOS Low Power Mode blocks autoplay — retry on ANY interaction
-    const retryEvents = ["touchstart", "touchend", "pointerdown", "click"];
-    const retry = () => tryPlay();
-    retryEvents.forEach((e) => window.addEventListener(e, retry, { passive: true, once: true }));
-
-    // iOS pauses video when switching tabs — resume on visibility
-    const onVisibility = () => { if (!document.hidden) tryPlay(); };
-    document.addEventListener("visibilitychange", onVisibility);
-
-    return () => {
-      retryEvents.forEach((e) => window.removeEventListener(e, retry));
-      document.removeEventListener("visibilitychange", onVisibility);
-    };
-  }, []);
-
-  return (
+const Hero = () => (
   <section id="top" className="relative h-screen w-full overflow-hidden">
     <video
-      ref={videoRef}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      disablePictureInPicture
-      disableRemotePlayback
-      poster={MEDIA.heroPoster}
+      autoPlay muted loop playsInline poster={MEDIA.heroPoster}
       className="absolute inset-0 w-full h-full object-cover ios-video"
-      style={{ pointerEvents: "none", WebkitTransform: "translateZ(0)", transform: "translateZ(0)" }}
+      style={{ pointerEvents: "none" }}
       x-webkit-airplay="deny"
+      webkit-playsinline="true"
+      disablePictureInPicture
     >
-      {/* MP4 source — iOS requires H.264 codec for autoplay */}
-      <source src={MEDIA.heroVideo} type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
     <div className="absolute inset-0 hero-overlay" />
@@ -227,8 +174,7 @@ const Hero = () => {
       </div>
     </div>
   </section>
-  );
-};
+);
 
 // ── About ─────────────────────────────────────────────────────────────────────
 const About = () => (
@@ -544,8 +490,8 @@ const Contact = () => {
               <a href="tel:+918460812572" className="text-white hover:text-[#C5A059] transition-colors">+91 84608 12572</a>
             </ContactRow>
             <ContactRow icon={<Mail size={18} />} label="Email">
-              <a href="mailto:sidhant@sanyamengineering.com" className="text-white hover:text-[#C5A059] transition-colors">
-                sidhant@sanyamengineering.com
+              <a href="mailto:info@sanyamengineering.com" className="text-white hover:text-[#C5A059] transition-colors">
+                info@sanyamengineering.com
               </a>
             </ContactRow>
             <ContactRow icon={<MapPin size={18} />} label="Location">
@@ -651,7 +597,7 @@ const Footer = () => (
         <div className="font-mono-caps text-[10px] text-[#C5A059] mb-4">Contact</div>
         <div className="text-sm text-neutral-300 space-y-2">
           <div>+91 84608 12572</div>
-          <div>sidhant@sanyamengineering.com</div>
+          <div>info@sanyamengineering.com</div>
           <div>Surat, Gujarat, India</div>
         </div>
       </div>
