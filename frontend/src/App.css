@@ -66,40 +66,6 @@
   background: rgba(197, 160, 89, 0.08);
 }
 
-/* ── Hero Buttons ─────────────────────────────────────────────────────────── */
-.hero-btn {
-  display: inline-flex;
-  align-items: center;
-  height: 46px;
-  border-radius: 4px;
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  overflow: hidden;
-  transition: transform 260ms ease, box-shadow 260ms ease, filter 260ms ease;
-  white-space: nowrap;
-}
-.hero-btn:hover { transform: translateY(-2px); }
-
-.hero-btn__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  flex-shrink: 0;
-}
-.hero-btn__divider {
-  width: 1px;
-  align-self: stretch;
-  flex-shrink: 0;
-}
-.hero-btn__label {
-  padding: 0 18px;
-}
 
 /* Primary — gold fill */
 .hero-btn--primary {
