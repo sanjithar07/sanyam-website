@@ -162,6 +162,7 @@ const Hero = () => {
       preload="auto"
       disablePictureInPicture
     >
+      
       <source src={MEDIA.heroVideo} type="video/mp4" />
     </video>
     <div className="absolute inset-0 hero-overlay" />
