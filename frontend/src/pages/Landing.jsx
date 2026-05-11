@@ -22,12 +22,20 @@ const MEDIA = {
   worker: "https://images.pexels.com/photos/7739856/pexels-photo-7739856.jpeg?auto=compress&cs=tinysrgb&w=1400",
 };
 
-// Scroll reveal hook
+// Scroll reveal hook — re-animates every time element enters viewport
 const useReveal = () => {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+          } else {
+            // Remove class when element leaves viewport so it re-animates on next scroll
+            e.target.classList.remove("in");
+          }
+        }),
       { threshold: 0.12 }
     );
     els.forEach((el) => io.observe(el));
@@ -185,24 +193,24 @@ const Hero = () => {
           real-world application demands — building components that are understood for how
           they <em className="text-[#C5A059] not-italic">perform</em>, not just how they are drawn.
         </p>
-        <div className="mt-10 flex flex-wrap gap-4">
+        <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4 items-stretch sm:items-center">
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="btn-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
+            className="btn-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center justify-center gap-2 w-full sm:w-[220px]"
           >
             Request a Quote <ArrowUpRight size={16} />
           </button>
           <a
             href="/sanyam-engineering-brochure.pdf"
             download
-            className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
+            className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center justify-center gap-2 w-full sm:w-[220px]"
           >
             Download Brochure <Download size={16} />
           </a>
           <a
             href="/sanyam-engineering-product-catalogue.pdf"
             download
-            className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center gap-2"
+            className="btn-outline-gold px-7 py-3.5 text-sm font-semibold tracking-wider rounded-sm inline-flex items-center justify-center gap-2 w-full sm:w-[220px]"
           >
             Download Catalogue <Download size={16} />
           </a>
